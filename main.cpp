@@ -216,6 +216,7 @@ void setup() {
   delay(1000);
   pinMode(LED_PIN, OUTPUT);
 
+  setCpuFrequencyMhz(240);
   // Clean start
   esp_wifi_stop();
   delay(100);
@@ -321,6 +322,7 @@ void sendBeacon(const char* ssid) {
   // Send it
   esp_err_t result = esp_wifi_80211_tx(WIFI_IF_STA, packet, offset, false);
   currentChannel++;
+  
   if (currentChannel > 11) {
     currentChannel = 1;
   }
